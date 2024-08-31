@@ -39,7 +39,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("<!DOCTYPE html><html><head></head><body><h1>Error 500: Internal server error. Please try agin later.</h1></body></html>"))
 		var remote string
 		if r.Header.Get("Cf-Connecting-Ip") == "" {
-			remote = r.RemoteAddr
+			if r.Header.Get("X-Forwarded-For") == "" {
+				remote = r.RemoteAddr
+			} else {
+				remote = r.Header.Get("X-Forwarded-For")
+			}
 		} else {
 			remote = r.Header.Get("Cf-Connecting-Ip")
 		}
