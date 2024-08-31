@@ -1,6 +1,6 @@
 # instructions
 
--w "<DISCORD WEBHOOK URL>"
+-w "DISCORD WEBHOOK URL"
 
 -h all headers in json format
 
