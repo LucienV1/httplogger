@@ -31,7 +31,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
                 }
         }
 
-        if r.Method != "GET" {
+        if r.Method != "GET" || r.URL.Path == "/robots.txt" || r.URL.Path == "/favicon.ico" {
                 w.WriteHeader(http.StatusMethodNotAllowed)
                 return
         } else {
