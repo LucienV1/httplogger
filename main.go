@@ -49,7 +49,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
                 }
                 var ct string
                 if r.Header.Get("CF-IPCountry") != "" {
-                        ct = "\n\t\\- Country: " + r.Header.Get("CF-IPCountry")
+                        ct = "\n\t\t\\- Country: " + r.Header.Get("CF-IPCountry")
                 }
                 body, err := io.ReadAll(r.Body)
                 if err != nil {
@@ -72,7 +72,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
                 bodyString := string(body)
 
                 client.CreateContent(`HTTP REQUEST:
-        \- Method: ` + r.Method + `
+    	\- Method: ` + r.Method + `
         \- URL: ` + r.URL.String() + `
         \- User-Agent: ` + r.UserAgent() + `
         \- Is Bot: ` + isbot + `
