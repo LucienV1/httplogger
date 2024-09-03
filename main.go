@@ -30,8 +30,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
                         isbot = "No"
                 }
         }
-
-        if r.Method != "GET" || r.URL.Path == "/robots.txt" || r.URL.Path == "/favicon.ico" {
+		if r.URL.Path == "/robots.txt" || r.URL.Path == "/favicon.ico" {
+			return
+		}
+        if r.Method != "GET" {
                 w.WriteHeader(http.StatusMethodNotAllowed)
                 return
         } else {
